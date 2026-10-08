@@ -1,6 +1,7 @@
 package com.example.pertemuan4
 
 import androidx.compose.foundation.Image
+import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -23,59 +24,95 @@ import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontFamily
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
 fun AktivitasPertama(modifier: Modifier = Modifier) {
-    Column(
-        modifier = modifier
-            .fillMaxSize()
-            .padding(top = 100.dp),
-        horizontalAlignment = Alignment.CenterHorizontally
+    Box(
+        modifier = modifier.fillMaxSize(),
     ) {
-        Text(
-            stringResource(R.string.prodi),
-            fontSize = 35.sp,
-            fontWeight = FontWeight.Bold
-        )
-        Text(
-            stringResource(R.string.univ),
-            fontSize = 22.sp
-        )
-        Spacer(modifier = Modifier.height(25.dp))
-        Card(
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .padding(12.dp),
-            colors = CardDefaults.cardColors(
-                containerColor = colorResource(R.color.card_0_bg)
-            )
+                .padding(top = 50.dp, start = 12.dp, end = 12.dp)
+                .align(Alignment.TopCenter),
+            horizontalAlignment = Alignment.CenterHorizontally,
         ) {
-            Row {
-                val gambar = painterResource(R.drawable.logo_umy)
-                Image(
-                    painter = gambar,
-                    contentDescription = null,
-                    modifier = Modifier.size(100.dp).padding(5.dp)
-                )
-                Spacer(modifier = Modifier.width(30.dp))
-                Column {
-                    Text(
-                        stringResource(R.string.nama),
-                        fontSize = 30.sp,
-                        fontFamily = FontFamily.Cursive,
-                        color = Color.White,
-                        modifier = Modifier.padding(top = 15.dp)
+            Text(
+                text = stringResource(R.string.prodi),
+                fontSize = 32.sp,
+                fontWeight = FontWeight.Bold,
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                softWrap = false,
+            )
+            Text(
+                text = stringResource(R.string.univ),
+                fontSize = 19.sp,
+                fontWeight = FontWeight.Medium,
+                textAlign = TextAlign.Center,
+                maxLines = 1,
+                softWrap = false,
+            )
+            Spacer(modifier = Modifier.height(25.dp))
+            Card(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .padding(8.dp),
+                colors = CardDefaults.cardColors(
+                    containerColor = colorResource(R.color.card_0_bg),
+                ),
+            ) {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(12.dp),
+                    horizontalArrangement = Arrangement.Start,
+                    verticalAlignment = Alignment.CenterVertically,
+                ) {
+                    val gambar = painterResource(R.drawable.logo_umy)
+                    Image(
+                        painter = gambar,
+                        contentDescription = null,
+                        modifier = Modifier
+                            .size(85.dp)
+                            .padding(2.dp),
                     )
-                    Text(
-                        stringResource(R.string.alamat),
-                        fontSize = 20.sp,
-                        color = Color.Yellow,
-                        modifier = Modifier.padding(top = 10.dp)
-                    )
+                    Spacer(modifier = Modifier.width(12.dp))
+                    Column(
+                        horizontalAlignment = Alignment.Start,
+                    ) {
+                        Text(
+                            text = stringResource(R.string.nama),
+                            fontSize = 24.sp,
+                            fontFamily = FontFamily.Cursive,
+                            color = Color.White,
+                            maxLines = 1,
+                            softWrap = false,
+                        )
+                        Spacer(modifier = Modifier.height(6.dp))
+                        Text(
+                            text = stringResource(R.string.alamat),
+                            fontSize = 18.sp,
+                            color = Color.Yellow,
+                            maxLines = 1,
+                            softWrap = false,
+                        )
+                    }
                 }
             }
         }
+
+        Text(
+            text = stringResource(R.string.copy),
+            modifier = Modifier
+                .align(Alignment.BottomCenter)
+                .padding(bottom = 30.dp),
+            textAlign = TextAlign.Center,
+            maxLines = 1,
+            softWrap = false,
+        )
     }
 }
